@@ -44,7 +44,7 @@ exports.getAllProfile = async function (req, res) {
 
 exports.deleteProfile = async function (req, res) {
   try {
-    const profile = await Profile.findByIdAndDelete(req.params.id);
+    const deletedProfile = await Profile.findByIdAndDelete(req.params.id);
 
     res.status(200).json({
       status: "success",
