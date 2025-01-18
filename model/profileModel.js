@@ -1,29 +1,28 @@
- 
- const mongoose = require ('mongoose');
+const mongoose = require("mongoose");
 
- const profileSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required: [true],
-    },
-    job:{
-        type: String,
-        required: true
-    },
-    email:{
-        type: String,
-        required: true
-    },
-    phoneNumber:{
-        type:Number,
-    },
-    address:{
-        type:String,
-    },
-    yearsOfExperience:{
-        type:Number
-    }
- })
+const profileSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "Name is required"],
+  },
+  job: {
+    type: String,
+    required: [true, "Job is required"],
+  },
+  email: {
+    type: String,
+    required: [true, "Email is required"],
+  },
+  phoneNumber: {
+    type: Number,
+  },
+  address: {
+    type: String,
+  },
+  yearsOfExperience: {
+    type: String,
+  },
+});
 
- const Profile = mongoose.model('Profile', profileSchema);
- module.exports = Profile;
+const Profile = mongoose.model("Profile", profileSchema);
+module.exports = Profile;
