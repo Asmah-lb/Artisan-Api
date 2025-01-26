@@ -14,6 +14,9 @@ exports.protectedRoute = async function (req, res, next) {
     } else {
       token = req.cookies.jwt;
     }
+
+    console.log("Token received:", token);
+
     //=====If token is not found====//
     if (!token) {
       return res.status(401).json({
@@ -36,6 +39,8 @@ exports.protectedRoute = async function (req, res, next) {
     }
     req.user = currUser;
     next();
+
+
   } catch (err) {
     res.status(401).json({
       status: "fail",

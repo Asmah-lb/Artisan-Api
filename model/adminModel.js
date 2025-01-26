@@ -1,14 +1,12 @@
-
-
 const mongoose = require("mongoose");
 
 const adminSchema = new mongoose.Schema({
   role: {
     type: String,
-    enum: ["admin", "subadmin"],
-    default: "admin",
+    enum: ["admin", "subadmin", "moderator"],
+    default: "subadmin",
   },
-  name: { type: String, required: true },
+  name: { type: String, required: [true, "Name is required"] },
   email: {
     type: String,
     lowercase:true,

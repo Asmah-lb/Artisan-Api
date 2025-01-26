@@ -10,3 +10,15 @@ exports.restrictedRoute = function (req, res, next) {
     });
   }
 };
+
+// exports.allowedRoles = function (req, res, next){
+//   const isAllowedRoles =['admin','subadmin'];
+//   if(isAllowedRoles.includes(req.user.role)){
+//     next();
+//   }else[
+//     res.status(400).json({
+//       status:"fail",
+//       message:"You don't have access!"
+//     })
+//   ]
+// }
