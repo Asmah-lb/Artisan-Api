@@ -16,7 +16,7 @@ exports.createAdmin = async function (req, res) {
     const saltRound = 10;
     const hashedPassword = bcrypt.hashSync(password, saltRound);
 
-    //Creating Admin
+    
     const createdAdmin = await Admin.create({
       name,
       email,
