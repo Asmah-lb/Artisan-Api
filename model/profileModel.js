@@ -24,5 +24,13 @@ const profileSchema = new mongoose.Schema({
   },
 });
 
+// profileSchema.set('toJSON', {
+//   transform: function (doc, ret) {
+//     ret.id = ret._id.toString();  // Convert _id to string and add it as 'id'
+//     delete ret._id;  // Remove the original _id field if not needed
+//     return ret;
+//   }
+// });
+
 const Profile = mongoose.model("Profile", profileSchema);
 module.exports = Profile;
