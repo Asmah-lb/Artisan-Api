@@ -7,6 +7,7 @@ const router = express.Router();
 
 //===Unprotected route===//
 router.get("/", profileController.getAllProfile);
+router.get("/:id", profileController.getProfileById);
 
 //====Protected and restricted routes======//
 router.post(

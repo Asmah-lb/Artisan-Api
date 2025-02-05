@@ -42,6 +42,31 @@ exports.getAllProfile = async function (req, res) {
   }
 };
 
+exports.getProfileById= async function (req, res) {
+  try {
+    const profile = await Profile.findById(req.params.id,);
+
+    if (!profile) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Profile not found",
+      });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        profile,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
+
 exports.deleteProfile = async function (req, res) {
   try {
     const deletedProfile = await Profile.findByIdAndDelete(req.params.id);
@@ -83,3 +108,5 @@ exports.updateProfile = async function (req, res) {
     });
   }
 };
+
+
