@@ -30,6 +30,9 @@ app.use(function (req, res, next) {
 app.use("/api/admin", adminRouter);
 app.use("/api/profiles", profileRouter);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+})
 
 mongoose
   .connect(databaseUrl)
