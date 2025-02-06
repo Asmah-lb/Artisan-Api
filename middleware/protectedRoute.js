@@ -34,7 +34,7 @@ exports.protectedRoute = async function (req, res, next) {
     const currUser = await Admin.findById(decoded.id);
     if (!currUser) {
       return res.status(401).json({
-        message: "User not found!",
+        message: "Admin not found!",
       });
     }
     req.user = currUser;

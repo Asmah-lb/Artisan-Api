@@ -28,6 +28,7 @@ exports.getAllProfile = async function (req, res) {
   try {
     const profiles = await Profile.find();
 
+
     res.status(200).json({
       status: "success",
       data: {
@@ -37,7 +38,7 @@ exports.getAllProfile = async function (req, res) {
   } catch (err) {
     res.status(400).json({
       status: "fail",
-      message: err.message,
+      message: err.message || "Profiles not found",
     });
   }
 };

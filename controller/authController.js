@@ -49,8 +49,7 @@ exports.logoutUser = function (req, res) {
   try {
     // Clear the JWT cookie
     res.clearCookie("jwt", { httpOnly: true, secure: true, sameSite: "strict" });
-
-    // Redirect to login page or return JSON response
+    
     res.status(200).json({
       status: "success",
       message: "Logout Successfully!",

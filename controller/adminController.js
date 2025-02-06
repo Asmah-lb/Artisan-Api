@@ -60,7 +60,24 @@ exports.getAllAdmins = async function (req, res) {
 
 exports.deleteAdmin = async function (req, res) {
   try {
-    const deletedAdmin = await Admin.findByIdAndDelete(req.params.id);
+    
+    const adminToDelete = await Admin.findById(req.params.id);
+
+    if (!adminToDelete) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Admin not found!",
+      });
+    }
+
+    if (adminToDelete.role === "admin") {
+      return res.status(403).json({
+        status: "fail",
+        message: "You can't delete this admin!",
+      });
+    }
+
+    await Admin.findByIdAndDelete(req.params.id);
 
     res.status(200).json({
       status: "success",
@@ -76,6 +93,7 @@ exports.deleteAdmin = async function (req, res) {
 
 
 
+
 exports.updateAdmin = async function (req, res) {
   try {
     const updatedAdmin = await Admin.findByIdAndUpdate(
@@ -87,6 +105,13 @@ exports.updateAdmin = async function (req, res) {
       }
     );
 
+    if (!updatedAdmin) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Admin not found!",
+      });
+    }
+  
     res.status(200).json({
       status: "success",
       message: "Admin Updated!",
